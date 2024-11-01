@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722046821468",
+    "project_id": "gestionmedicamento-d58f4",
+    "storage_bucket": "gestionmedicamento-d58f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722046821468:android:e4fb4946171ac692b73299",
+        "android_client_info": {
+          "package_name": "com.example.gestionmedicamentos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcKDIhteaEEJg0HmdI8-P_tysIPcGM5uU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
