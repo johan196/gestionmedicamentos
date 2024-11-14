@@ -3,7 +3,7 @@ package com.example.gestionmedicamentos;
 public class Genero {
     String descripcion;
 
-    public Genero(String descripcion) {
+    public Genero() {
         this.descripcion = descripcion;
     }
 

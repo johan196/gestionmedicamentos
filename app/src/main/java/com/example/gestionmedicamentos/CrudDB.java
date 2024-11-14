@@ -14,8 +14,8 @@ public class CrudDB {
         Conexion conex = new Conexion(context, "conexion", null, 1);
 
         SQLiteDatabase bd = conex.getWritableDatabase();
-        if (!documento.isEmpty() && clave.isEmpty()) {
-            Cursor fila = bd.rawQuery("Select p.nombrecompleto,p.documento,r.cod_rol,t.tiporol from persona join rol on p.cod_rol =r.cod_rol where documento = ? and clave = ?", new String[]{documento, clave});
+        if (!documento.isEmpty() || !clave.isEmpty()) {
+            Cursor fila = bd.rawQuery("SELECT p.nombrecompleto, p.documento, p.celular, p.clave, p.repeclave,r.descripcion AS rol_descripcion, genero.descripcion AS genero_descripcion FROM persona p INNER JOIN rol r ON persona.cod_rol = rol.cod_rol INNER JOIN genero g ON persona.cod_genero = g.cod_genero where documento=? and clave=?", new String[]{documento, clave});
             if (fila.moveToFirst()) {
                 String nombrecomp = fila.getString(0);
                 String document = fila.getString(1);
@@ -34,6 +34,43 @@ public class CrudDB {
 
         }
         return null;
+    }
+    public boolean registrar(Context context,String nombreCompleto, String documento, String celular, String clave, String repeClave, int codRol, int codGenero) {
+
+        Conexion conex = new Conexion(context, "conexion", null, 1);
+        SQLiteDatabase bd = conex.getWritableDatabase();
+
+        // Validaciones básicas
+        if (nombreCompleto.isEmpty() || documento.isEmpty() || celular.isEmpty() || clave.isEmpty() || repeClave.isEmpty()) {
+            Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Validación de coincidencia de contraseñas
+        if (!clave.equals(repeClave)) {
+            Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Inserta los datos en la tabla si todas las validaciones pasan
+        ContentValues values = new ContentValues();
+        values.put("nombrecompleto", nombreCompleto);
+        values.put("documento", documento);
+        values.put("celular", celular);
+        values.put("clave", clave);
+        values.put("cod_rol", codRol);
+        values.put("cod_genero", codGenero);
+
+        long resultado = bd.insert("persona", null, values);
+        bd.close(); // Cierra la base de datos después de la operación
+
+        if (resultado == -1) {
+            Toast.makeText(context, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show();
+            return true;
+        }
     }
 
 }

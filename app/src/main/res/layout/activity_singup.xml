@@ -11,110 +11,118 @@
     android:background="@drawable/imageplantilla"
     tools:context=".singup">
 
-    <androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="30dp"
-    app:cardCornerRadius="30dp"
-    app:cardElevation="20dp">
-    <LinearLayout
+    <!-- ScrollView agregado para permitir desplazamiento -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:padding="24dp"
-        android:background="@drawable/custom_edittext">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/nombrecompleto"
-            android:inputType="text"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="20dp"
-            android:padding="8dp"
-            android:hint="Ingresa nombres y apellidos"
-            android:drawablePadding="8dp"
-            android:spinnerMode="dropdown"
-
-            android:textColor="@color/black"/>
-
-        <Spinner
-            android:id="@+id/tdocumento"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:minHeight="48dp"
-            android:padding="8dp" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/ndocumento"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="20dp"
-            android:padding="8dp"
-            android:hint="Ingrese el numero de documento"
-            android:inputType="number"
-            android:drawablePadding="8dp"
-            android:textColor="@color/black"/>
+            android:layout_margin="30dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp">
 
-        <Spinner
-            android:id="@+id/trol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:minHeight="48dp"
-            android:padding="8dp" />
-        <Spinner
-            android:id="@+id/tgenero"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:minHeight="48dp"
-            android:padding="8dp" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/celular"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="20dp"
-            android:padding="8dp"
-            android:hint="Ingrese nucero celular"
-            android:drawablePadding="8dp"
-            android:textColor="@color/black"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/clave"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="20dp"
-            android:padding="8dp"
-            android:hint="Ingrese una contraseña"
-            android:drawablePadding="8dp"
-            android:textColor="@color/black"/>
-        <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/cclave"
-        android:background="@drawable/custom_edittext"
-        android:layout_marginTop="20dp"
-        android:padding="8dp"
-        android:hint="Ingrese una contraseña"
-        android:drawablePadding="8dp"
-        android:textColor="@color/black"/>
-        <Button
-            android:id="@+id/guardar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:padding="8dp"
-            android:text="Registrar"
-            android:drawablePadding="8dp"
-            android:background="@drawable/custom_edittext"
-            android:layout_marginTop="20dp"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:padding="24dp"
+                android:background="@drawable/custom_edittext">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/nombreyapellido"
+                    android:inputType="text"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:hint="Ingresa nombres y apellidos"
+                    android:drawablePadding="8dp"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/black"/>
+                <Spinner
+                    android:id="@+id/tdocumento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/ndocumento"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:hint="Ingrese el número de documento"
+                    android:inputType="number"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"/>
 
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+                <Spinner
+                    android:id="@+id/trol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"
+                    android:padding="8dp" />
+                <Spinner
+                    android:id="@+id/tgenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"
+                    android:padding="8dp" />
 
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/celular"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:hint="Ingrese número celular"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/clave"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:hint="Ingrese una contraseña"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/cclave"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"
+                    android:padding="8dp"
+                    android:hint="Confirme la contraseña"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:id="@+id/guardar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="8dp"
+                    android:text="Registrar"
+                    android:drawablePadding="8dp"
+                    android:background="@drawable/custom_edittext"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </LinearLayout>

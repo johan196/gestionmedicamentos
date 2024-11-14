@@ -37,29 +37,27 @@ public class credencial extends AppCompatActivity {
                 switch (usuario.getRol()) {
                     case "Médico":
                         Intent iMedico = new Intent(this, pantallamedico.class);
-                        iMedico.putExtra("keydocumento", usuario.nombrecompleto);
+                        iMedico.putExtra("keynombrecompleto", usuario.nombrecompleto);
                         iMedico.putExtra("keydocumento", usuario.documento);
-                        iMedico.putExtra("keydocumento", usuario.rol);
+                        iMedico.putExtra("cod_rol", usuario.rol);
                         startActivity(iMedico);
                         break;
                     case "Enfermero":
 
                         Intent iEnfermero = new Intent(this, pantallaEnfermero.class);
-                        iEnfermero.putExtra("keydocumento", usuario.nombrecompleto);
+                        iEnfermero.putExtra("keynombrecompleto", usuario.nombrecompleto);
                         iEnfermero.putExtra("keydocumento", usuario.documento);
-                        iEnfermero.putExtra("keydocumento", usuario.rol);
+                        iEnfermero.putExtra("cod_rol", usuario.rol);
                         startActivity(iEnfermero);
                         break;
                     case "Paciente":
                         Intent iPaciente = new Intent(this, pantallaPaciente.class);
                         iPaciente.putExtra("keynombrecompleto", usuario.nombrecompleto);
                         iPaciente.putExtra("keydocumento", usuario.documento);
-                        iPaciente.putExtra("keydocumento", usuario.rol);
+                        iPaciente.putExtra("cod_rol", usuario.rol);
                         startActivity(iPaciente);
                         break;
                     default:
-
-                        return;
                 }
 
 
@@ -74,7 +72,7 @@ public class credencial extends AppCompatActivity {
     }
 
     public void registrar(View view) {
-        Intent i = new Intent(this, singup.class);
+        Intent i = new Intent(this,singup.class);
         startActivity(i);
 
     }
