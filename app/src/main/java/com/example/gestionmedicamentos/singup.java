@@ -1,6 +1,7 @@
 package com.example.gestionmedicamentos;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -37,16 +38,16 @@ public class singup extends AppCompatActivity {
         tgenero = findViewById(R.id.tgenero);
         guardar = findViewById(R.id.guardar);
 
-
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registrar();
+            }
+        });
 
     }
 
-
-
-
-
-
-    public void registrar(View view) {
+    public void registrar() {
         Conexion conexion = new Conexion(this, "Conexion", null, 1);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
@@ -59,7 +60,7 @@ public class singup extends AppCompatActivity {
         if(!nombreApellidos.isEmpty() || !documentos.isEmpty() || !celulars.isEmpty() || !contra.isEmpty() ) {
             Cursor cursor = db.rawQuery("SELECT * FROM persona where documento = ? ", new String[]{documentos});
             if (cursor.getCount() > 0) {
-                Toast.makeText(this, "el celular ya se encuentra registrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "la pérsona ya se encuentra registrado", Toast.LENGTH_SHORT).show();
         }else{
                 ContentValues registro = new ContentValues();
                 registro.put("nombrccompleto", nombreApellidos);
@@ -70,45 +71,57 @@ public class singup extends AppCompatActivity {
 
                 db.insert("persona", null, registro);
                 db.close();
-
-
                 Toast.makeText(this, "el usuario se registro exitosamente ", Toast.LENGTH_SHORT).show();
 
             }
         }else{
            validarCampos();
         }
+
     }
-    private boolean validarCampos() {
-        String nombreApellidos = nombreyapellido.getText().toString().trim();
-        String documentos = ndocumento.getText().toString().trim();
-        String celulars = celular.getText().toString().trim();
-        String contra = clave.getText().toString().trim();
-        String rcontra = cclave.getText().toString().trim();
+    private void validarCampos() {
+        boolean devolver = false;
+        String nombreApellidos = nombreyapellido.getText().toString();
+        String documentos = ndocumento.getText().toString();
+        String celulars = celular.getText().toString();
+        String contra = clave.getText().toString();
+        String rcontra = cclave.getText().toString();
 
 
         if (nombreApellidos.isEmpty()) {
-            nombreyapellido.setError("Por favor ingresa tu nombre completo");
-            return false;
+            nombreyapellido.setError("Porfavor ingresa tu nombre completo");
         }
         if (documentos.isEmpty()) {
-            ndocumento.setError("Por favor ingresa tu número de documento");
-            return false;
+           ndocumento.setError("porfavor ingresa tu numero de documento ");
         }
         if (celulars.isEmpty()) {
-            celular.setError("Por favor ingresa un número celular");
-            return false;
+            celular.setError("porfavor ingresa tu numero celular ");
         }
         if (contra.isEmpty()) {
-            clave.setError("Por favor ingresa una clave");
-            return false;
+             clave.setError ("porfavor ingresa una clave ");
         }
-        if (!contra.equals(rcontra)) {
+        if (contra!=rcontra) {
             cclave.setError("Las claves no coinciden");
-            return false;
+        }else{
+            guardar.setEnabled(true);
         }
+        if(celulars.length()<=9 && celulars.length()>=11){
+            celular.setError("el numero de celular debe tener tener 10 digitos");
+        }else{
+            celular.setError("Exitosoooo");
+        }
+        if(documentos.equals(documentos)){
+            ndocumento.setError( "la persona ya se encuentra registrado");
 
-        return true;
+        }
+        if(documentos.length()>=6 && documentos.length()<=11){
+            ndocumento.setError("la Cedula debe contener entre 7 y 10 digitos");
+    }
+    }
+
+    public void regresar(){
+        Intent i = new Intent(this,credencial.class);
+        startActivity(i);
     }
 
 }

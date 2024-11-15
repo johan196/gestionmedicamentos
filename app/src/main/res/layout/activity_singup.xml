@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/nombreyapellido"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:background="@drawable/custom_edittext"
                     android:layout_marginTop="20dp"
                     android:padding="8dp"
@@ -87,6 +87,7 @@
                     android:background="@drawable/custom_edittext"
                     android:layout_marginTop="20dp"
                     android:padding="8dp"
+                    android:inputType="number"
                     android:hint="Ingrese número celular"
                     android:drawablePadding="8dp"
                     android:textColor="@color/black"/>
@@ -98,6 +99,7 @@
                     android:background="@drawable/custom_edittext"
                     android:layout_marginTop="20dp"
                     android:padding="8dp"
+
                     android:hint="Ingrese una contraseña"
                     android:drawablePadding="8dp"
                     android:textColor="@color/black"/>
